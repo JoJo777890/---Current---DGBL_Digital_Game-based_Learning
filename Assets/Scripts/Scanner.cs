@@ -10,11 +10,15 @@ public class Scanner : MonoBehaviour
     //[SerializeField] ScannerManager scannerManager;
     [SerializeField] float speed = 1.0f;
 
+    private int clickTimes = 0;
     private bool isScheduledForDestruction = false;
     private bool isMoving = false;
     private List<string> touchedLetters = new List<string>();
 
     public string combinedWord;
+    public string resultWord;
+
+    public event Action onFetchedResultWord;
     
     private void Start()
     {
@@ -24,7 +28,16 @@ public class Scanner : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Fetch Single ResultWord.
+            if (clickTimes == 0)
+            {
+                Invoke("FetchCombinedWord", 2.5f);
+                clickTimes++;
+            }
+        }
+
         if (isMoving)
         {
             // Move forwards right.
@@ -58,6 +71,14 @@ public class Scanner : MonoBehaviour
     {
         combinedWord = string.Join("", touchedLetters);
         Debug.Log("g letter combined: " + combinedWord);
+    }
+
+    void FetchCombinedWord()
+    {
+        resultWord = combinedWord;
+        Debug.Log("Single Result Word: " + resultWord);
+
+        onFetchedResultWord();
     }
 
     public void StartDestroyObject()

@@ -29,13 +29,14 @@ public class ScannerManager : MonoBehaviour
                     scanner.GetComponent<Scanner>().StartDestroyObject();
                 }
                 
-                Invoke("FetchCombinedWord", 2.5f);
+                // Fetch a List of ResultWord.
+                Invoke("FetchCombinedWords", 2.5f);
                 isFirstClick = false;
             }
         }
     }
 
-    private void FetchCombinedWord()
+    private void FetchCombinedWords()
     {
         foreach (GameObject scanner in scanners)
         {
