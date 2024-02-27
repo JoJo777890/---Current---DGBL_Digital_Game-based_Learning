@@ -1,15 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AnimalMover : MonoBehaviour
+public class AnimalCollection : MonoBehaviour
 {
     // List of every animals.
     public List<Transform> animalTransforms = new List<Transform>();
 
-    private void Start()
+    private void Awake()
     {
         // Find all animals in AnimalCollection.
         foreach (Transform child in transform)
