@@ -217,7 +217,7 @@ Transform:
   - {fileID: 4903481762514671219}
   - {fileID: 1565917045297104745}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4493901547156568331
 MonoBehaviour:
@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 5786219466924111665}
   - component: {fileID: 4107999352223837413}
   - component: {fileID: 4131876141989904925}
+  - component: {fileID: 5013398534497153859}
   m_Layer: 0
   m_Name: Scanner
   m_TagString: Scanners
@@ -471,6 +472,20 @@ MonoBehaviour:
   maxLogCount: 80
   modelScript: {fileID: 0}
   displayText: 
+--- !u!114 &5013398534497153859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5305733393420093539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82200a9e1e41a7042ad5e08e67a3f806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  combinedWord: 
 --- !u!1 &8960405042717562685
 GameObject:
   m_ObjectHideFlags: 0
