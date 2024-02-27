@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="Only_QR_Code_Level_3_QR_Code" size="0.300000 0.300000" />
+    <ImageTarget name="Only_QR_Code_Level_2_QR_Code" size="0.300000 0.300000" />
+    <ImageTarget name="Only_QR_Code_Level_1_QR_Code" size="0.300000 0.300000" />
+  </Tracking>
+</QCARConfig>

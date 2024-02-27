@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="Nihilism_Headshot_QR_Code_0dot3" size="0.300000 0.300000" />
+    <ImageTarget name="Nihilism_Headshot_QR_Code" size="0.060000 0.060000" />
+  </Tracking>
+</QCARConfig>

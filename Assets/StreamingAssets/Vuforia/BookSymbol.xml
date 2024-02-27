@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="V4_Book_Symbol_4_Camera_Captured" size="0.300000 0.249844" />
+    <ImageTarget name="V4_Book_Symbol_3_Camera_Captured" size="0.300000 0.255711" />
+    <ImageTarget name="V4_Book_Symbol_2_Camera_Captured" size="0.300000 0.245835" />
+    <ImageTarget name="V4_Book_Symbol_1_Camera_Captured" size="0.300000 0.254108" />
+    <ImageTarget name="V3_4dot5cm_Book_Symbol_4_Camera_Captured" size="0.045000 0.044948" />
+    <ImageTarget name="V3_4dot5cm_Book_Symbol_3_Camera_Captured" size="0.045000 0.045685" />
+    <ImageTarget name="V3_4dot5cm_Book_Symbol_2_Camera_Captured" size="0.045000 0.044391" />
+    <ImageTarget name="V3_4dot5cm_Book_Symbol_1_Camera_Captured" size="0.045000 0.045025" />
+    <ImageTarget name="V3_30cm_Book_Symbol_4_Camera_Captured" size="0.300000 0.299655" />
+    <ImageTarget name="V3_30cm_Book_Symbol_3_Camera_Captured" size="0.300000 0.304566" />
+    <ImageTarget name="V3_30cm_Book_Symbol_2_Camera_Captured" size="0.300000 0.295939" />
+    <ImageTarget name="V3_30cm_Book_Symbol_1_Camera_Captured" size="0.300000 0.300169" />
+    <ImageTarget name="Book_Symbol_4_Camera_Captured" size="0.300000 0.307171" />
+    <ImageTarget name="Book_Symbol_3_Camera_Captured" size="0.300000 0.294915" />
+    <ImageTarget name="Book_Symbol_2_Camera_Captured" size="0.300000 0.308297" />
+    <ImageTarget name="Book_Symbol_1_Camera_Captured" size="0.300000 0.305045" />
+    <ImageTarget name="Old_BookSymbol1_CameraCaptured" size="0.300000 0.315411" />
+    <ImageTarget name="Old_BookSymbol_CameraCaptured" size="0.300000 0.342251" />
+    <ImageTarget name="Old_BookSymbol2_CameraCaptured" size="0.300000 0.314966" />
+    <ImageTarget name="Old_BookSymbol3_CameraCaptured" size="0.300000 0.309735" />
+    <ImageTarget name="Old_BookSymbol4_CameraCaptured" size="0.300000 0.323414" />
+    <ImageTarget name="BookSymbol_5cm" size="0.050000 0.048909" />
+    <ImageTarget name="BookSymbol_30cm" size="0.300000 0.293456" />
+  </Tracking>
+</QCARConfig>
