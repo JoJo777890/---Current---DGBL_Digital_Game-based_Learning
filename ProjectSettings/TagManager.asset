@@ -9,6 +9,7 @@ TagManager:
   - Scanners
   - Animals
   - Audio
+  - ScannerManager
   layers:
   - Default
   - TransparentFX

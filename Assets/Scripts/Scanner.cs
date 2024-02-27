@@ -10,12 +10,16 @@ public class Scanner : MonoBehaviour
     //[SerializeField] ScannerManager scannerManager;
     [SerializeField] float speed = 1.0f;
 
+    private bool isScheduledForDestruction = false;
     private bool isMoving = false;
     private List<string> touchedLetters = new List<string>();
+
+    public string combinedWord;
     
     private void Start()
     {
-        //scannerManager.onScreenClick += MoveScanner;
+        // scannerManager = GameObject.FindGameObjectWithTag("ScannerManager");
+        // scannerManager.GetComponent<ScannerManager>().onScreenClick += MoveScanner;
     }
 
     private void Update()
@@ -23,6 +27,13 @@ public class Scanner : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isMoving = true;
+            
+            if (!isScheduledForDestruction)
+            {
+                // Destroy this GameObject in 3 seconds.
+                Invoke("DestroyObject", 3f);
+                isScheduledForDestruction = true;
+            }
         }
         
         if (isMoving)
@@ -30,23 +41,40 @@ public class Scanner : MonoBehaviour
             // Move forwards right.
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
+
+        CombineLetters();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("g Letter Detected! " + other.name);
-        Debug.Log("g Letter: " + other.GetComponent<TMP_Text>().text);
-
+        
+        // If touched a letter, add that letter to "touchedLetters".
         if (other.tag == "Letters")
         {
-            Debug.Log(other.GetComponent<TMP_Text>().text);
+            Debug.Log("g Letter: " + other.GetComponent<TMP_Text>().text);
+            
+            touchedLetters.Add(other.GetComponent<TMP_Text>().text);
         }
     }
-
+    
     public void  MoveScanner()
     {
         Debug.Log("Scanner Moving...");
-
+        
+        // TODO
         //isMoving = true;
+    }
+    
+    void CombineLetters()
+    {
+        combinedWord = string.Join("", touchedLetters);
+        Debug.Log("g letter combined: " + combinedWord);
+    }
+    
+    void DestroyObject()
+    {
+        // 销毁物体
+        Destroy(gameObject);
     }
 }
