@@ -51,8 +51,6 @@ public class Scanner : MonoBehaviour
     {
         Debug.Log("Scanner Moving...");
         
-        // Destroy this GameObject in 3 seconds.
-        Invoke("DestroyObject", 3f);
         isMoving = true;
     }
     
@@ -60,6 +58,12 @@ public class Scanner : MonoBehaviour
     {
         combinedWord = string.Join("", touchedLetters);
         Debug.Log("g letter combined: " + combinedWord);
+    }
+
+    public void StartDestroyObject()
+    {
+        // Destroy this GameObject in 3 seconds.
+        Invoke("DestroyObject", 3f);
     }
     
     void DestroyObject()
