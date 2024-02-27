@@ -35,10 +35,11 @@ public class ScannerPresenter : MonoBehaviour
 
     private void UpdateUI()
     {
+        combinedWordText.text = "";
         foreach (GameObject scanner in scanners)
         {
             //Debug.Log("Scanner name: " + scanner.name);
-            combinedWordText.text = scanner.GetComponent<Scanner>().combinedWord;
+            combinedWordText.text += scanner.GetComponent<Scanner>().combinedWord + "\n";
         }
     }
 }

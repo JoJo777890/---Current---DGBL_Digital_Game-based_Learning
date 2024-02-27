@@ -12,10 +12,12 @@ public class ScannerManager : MonoBehaviour
     {
         scanners = GameObject.FindGameObjectsWithTag("Scanners");
         
-        foreach (GameObject scanner in scanners)
-        {
-            //Debug.Log("Scanner name: " + scanner.name);
-            scanner.GetComponent<Scanner>().MoveScanner();
-        }
+        
+        
+        // foreach (GameObject scanner in scanners)
+        // {
+        //     //Debug.Log("Scanner name: " + scanner.name);
+        //     scanner.GetComponent<Scanner>().MoveScanner();
+        // }
     }
 }
