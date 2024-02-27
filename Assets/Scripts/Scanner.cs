@@ -24,17 +24,6 @@ public class Scanner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            isMoving = true;
-            
-            if (!isScheduledForDestruction)
-            {
-                // Destroy this GameObject in 3 seconds.
-                Invoke("DestroyObject", 3f);
-                isScheduledForDestruction = true;
-            }
-        }
         
         if (isMoving)
         {
@@ -62,8 +51,9 @@ public class Scanner : MonoBehaviour
     {
         Debug.Log("Scanner Moving...");
         
-        // TODO
-        //isMoving = true;
+        // Destroy this GameObject in 3 seconds.
+        Invoke("DestroyObject", 3f);
+        isMoving = true;
     }
     
     void CombineLetters()
