@@ -6,11 +6,15 @@ using UnityEngine;
 
 public class AnimalGrabber : MonoBehaviour
 {
+    private SoundEffectPlayer soundEffectPlayer;
+    private GameObject audioSource;
     private GameObject[] animals;
     private Scanner scanner;
     private string resultWord;
     private void Start()
     {
+        audioSource = GameObject.FindGameObjectWithTag("Audio");
+        soundEffectPlayer = audioSource.GetComponent<SoundEffectPlayer>();
         scanner = GetComponent<Scanner>();
         scanner.onFetchedResultWord += FetchResultWord;
     }
@@ -33,6 +37,8 @@ public class AnimalGrabber : MonoBehaviour
             {
                 animal.transform.SetParent(transform.parent, true);
                 animal.transform.position = transform.parent.position;
+                
+                soundEffectPlayer.PlayYaySoundEffect();
             }
         }
     }
