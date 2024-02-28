@@ -9,6 +9,7 @@ public class AnimalGrabber : MonoBehaviour
 {
     private GoodJobImageShower goodJobImageShower;
     private SoundEffectPlayer soundEffectPlayer;
+    private ScannerManager scannerManager;
     private GameObject[] animals;
     private Scanner scanner;
     private string resultWord;
@@ -16,6 +17,7 @@ public class AnimalGrabber : MonoBehaviour
     {
         goodJobImageShower = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GoodJobImageShower>();
         soundEffectPlayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectPlayer>();
+        scannerManager = GameObject.FindGameObjectWithTag("ScannerManager").GetComponent<ScannerManager>();
         scanner = GetComponent<Scanner>();
         scanner.onFetchedResultWord += FetchResultWord;
     }
@@ -42,6 +44,7 @@ public class AnimalGrabber : MonoBehaviour
                 soundEffectPlayer.PlayYaySoundEffect();
                 
                 ShowGreatJobImage();
+                scannerManager.isPassed = true;
             }
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScannerManager : MonoBehaviour
 {
+    public bool isPassed = false;
     public GameObject[] scanners;
     private List<string> resultWords = new List<string>();
     private int clickTimes = 0;
@@ -23,8 +24,14 @@ public class ScannerManager : MonoBehaviour
         {
             if (clickTimes == 1)
             {
-                // Debug.Log("Click: !");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (isPassed == false)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             if (clickTimes == 0)
             {
