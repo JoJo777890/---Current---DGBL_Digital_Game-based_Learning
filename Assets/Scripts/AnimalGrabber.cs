@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnimalGrabber : MonoBehaviour
 {
+    private GameObject canvas;
+    private GoodJobImageShower goodJobImageShower;
     private SoundEffectPlayer soundEffectPlayer;
     private GameObject audioSource;
     private GameObject[] animals;
@@ -13,6 +16,8 @@ public class AnimalGrabber : MonoBehaviour
     private string resultWord;
     private void Start()
     {
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        goodJobImageShower = canvas.GetComponent<GoodJobImageShower>();
         audioSource = GameObject.FindGameObjectWithTag("Audio");
         soundEffectPlayer = audioSource.GetComponent<SoundEffectPlayer>();
         scanner = GetComponent<Scanner>();
@@ -39,7 +44,14 @@ public class AnimalGrabber : MonoBehaviour
                 animal.transform.position = transform.parent.position;
                 
                 soundEffectPlayer.PlayYaySoundEffect();
+                
+                ShowGreatJobImage();
             }
         }
+    }
+
+    void ShowGreatJobImage()
+    {
+        goodJobImageShower.StartShowGoodJobRawImage();
     }
 }

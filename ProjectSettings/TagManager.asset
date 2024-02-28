@@ -10,6 +10,7 @@ TagManager:
   - Animals
   - Audio
   - ScannerManager
+  - Canvas
   layers:
   - Default
   - TransparentFX
