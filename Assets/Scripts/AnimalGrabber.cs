@@ -7,19 +7,15 @@ using UnityEngine.UI;
 
 public class AnimalGrabber : MonoBehaviour
 {
-    private GameObject canvas;
     private GoodJobImageShower goodJobImageShower;
     private SoundEffectPlayer soundEffectPlayer;
-    private GameObject audioSource;
     private GameObject[] animals;
     private Scanner scanner;
     private string resultWord;
     private void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
-        goodJobImageShower = canvas.GetComponent<GoodJobImageShower>();
-        audioSource = GameObject.FindGameObjectWithTag("Audio");
-        soundEffectPlayer = audioSource.GetComponent<SoundEffectPlayer>();
+        goodJobImageShower = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GoodJobImageShower>();
+        soundEffectPlayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectPlayer>();
         scanner = GetComponent<Scanner>();
         scanner.onFetchedResultWord += FetchResultWord;
     }
