@@ -7,7 +7,7 @@ public class ScannerManager : MonoBehaviour
 {
     public GameObject[] scanners;
     private List<string> resultWords = new List<string>();
-    private int clickTimes = 0;
+    private bool isFirstClick = true;
     
     //public event Action onScreenClick;
 
@@ -20,7 +20,7 @@ public class ScannerManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (clickTimes == 0)
+            if (isFirstClick == true)
             {
                 foreach (GameObject scanner in scanners)
                 {
@@ -31,7 +31,7 @@ public class ScannerManager : MonoBehaviour
                 
                 // Fetch a List of ResultWord.
                 Invoke("FetchCombinedWords", 2.5f);
-                clickTimes++;
+                isFirstClick = false;
             }
         }
     }
