@@ -44,7 +44,7 @@ public class WordScanCollector : MonoBehaviour
         // 檢查 currMessage 是否符合陣列中的動物名稱
         for (int j = 0; j < animalNames.Length; j++)
         {
-            Debug.Log("*" + currMessage);
+            //Debug.Log("*" + currMessage);                                // I commented out this for experiment.
             if (string.Equals(currMessage, animalNames[j]) == true)
             {
                 return true;

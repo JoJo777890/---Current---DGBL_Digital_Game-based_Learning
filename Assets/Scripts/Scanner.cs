@@ -70,7 +70,7 @@ public class Scanner : MonoBehaviour
     void CombineLetters()
     {
         combinedWord = string.Join("", touchedLetters);
-        Debug.Log("g letter combined: " + combinedWord);
+        //Debug.Log("g letter combined: " + combinedWord);
     }
 
     void FetchCombinedWord()
