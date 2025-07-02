@@ -8,9 +8,9 @@ public class GestureTracker_Demo2 : MonoBehaviour
     public GameObject gestureTarget; // Assign the moving target
     public TextMeshProUGUI uiText;   // Assign a UI Text element
 
-    public float moveThreshold = 0.002f;    // Originally "0.03f"
-    public int smoothFrameCount = 3;    // Originally "5"
-    public int requiredFrames = 2;      // Originally "3"
+    public float moveThreshold = 0.03f;    // Originally "0.03f"
+    public int smoothFrameCount = 5;    // Originally "5"
+    public int requiredFrames = 3;      // Originally "3"
     public float cooldownTime = 0.25f;  // Originally "1f"
 
     private Queue<float> recentZPositions = new Queue<float>();
