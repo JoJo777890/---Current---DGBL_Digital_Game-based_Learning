@@ -6,25 +6,28 @@ using UnityEngine;
 public class TargetRotationUI_Demo2 : MonoBehaviour
 {
     public GameObject imageTargetA;
-    public GameObject imageTargetC;
+    public GameObject imageTargetM;
 
     public TextMeshProUGUI infoTextA;
-    public TextMeshProUGUI infoTextC;
+    public TextMeshProUGUI infoTextM;
 
     void Update()
     {
+
         if (imageTargetA.activeInHierarchy)
         {
-            Vector3 rotA = imageTargetA.transform.eulerAngles;
+            Vector3 rotA = imageTargetA.transform.localEulerAngles;
 
-            infoTextA.text = $"[Target A]\nRot: X: {360 - rotA.x:F1}\nRot: Y: {360 - rotA.z:F1}\nRot: Z: {rotA.y:F1}";
+            infoTextA.text = $"[Target A]\nRot: X: {360 - rotA.x:F1}\nRot: Y: {rotA.y:F1}\nRot: Z: {360 - rotA.z:F1}";
         }
 
-        if (imageTargetC.activeInHierarchy)
+        if (imageTargetM.activeInHierarchy)
         {
-            Vector3 rotC = imageTargetC.transform.eulerAngles;
+            Vector3 rotM = imageTargetM.transform.localEulerAngles;
 
-            infoTextC.text = $"[Target C]\nRot: X: {360 - rotC.x:F1}\nRot: Y: {360 - rotC.z:F1}\nRot: Z: {rotC.y:F1}";
+            infoTextM.text = $"[Target M]\nRot: X: {360 - rotM.x:F1}\nRot: Y: {rotM.y:F1}\nRot: Z: {360 - rotM.z:F1}";
         }
+
+
     }
 }

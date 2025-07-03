@@ -13,7 +13,7 @@ public class GestureTracker_Demo2 : MonoBehaviour
     public int requiredFrames = 3;      // Originally "3"
     public float cooldownTime = 0.25f;  // Originally "1f"
 
-    private Queue<float> recentZPositions = new Queue<float>();
+    private Queue<float> recentYPositions = new Queue<float>();
     private int upFrames = 0;
     private float cooldownTimer = 0f;
 
@@ -32,25 +32,24 @@ public class GestureTracker_Demo2 : MonoBehaviour
             return;
         }
 
-        float currentZ = gestureTarget.transform.position.z;
+        float currentY = gestureTarget.transform.position.z;
 
-        recentZPositions.Enqueue(currentZ);
-        if (recentZPositions.Count > smoothFrameCount)
-            recentZPositions.Dequeue();
+        recentYPositions.Enqueue(currentY);
+        if (recentYPositions.Count > smoothFrameCount)
+            recentYPositions.Dequeue();
 
-        float avgZ = 0f;
-        foreach (var y in recentZPositions)
-            avgZ += y;
+        float avgY = 0f;
+        foreach (var y in recentYPositions)
+            avgY += y;
 
-        avgZ /= recentZPositions.Count;
+        avgY /= recentYPositions.Count;
 
-        float deltaZ = currentZ - avgZ;
+        float deltaY = currentY - avgY;
 
-        uiText.text = $"[Up Trigger]\nCurrent Y: {currentZ:F3}\nΔY: {deltaZ:F3}\nUp Trigger: "; // "Current Y" is actually "Z Axis"
-
-        if (recentZPositions.Count == smoothFrameCount)
+        uiText.text = $"[Up Trigger]\nCurrent Y: {currentY:F3}\nΔY: {deltaY:F3}\nUp Trigger: ";
+        if (recentYPositions.Count == smoothFrameCount)
         {
-            if (deltaZ > moveThreshold)
+            if (deltaY > moveThreshold)
             {
                 upFrames++;
             }
@@ -77,7 +76,7 @@ public class GestureTracker_Demo2 : MonoBehaviour
 
     void ResetTracking()
     {
-        recentZPositions.Clear();
+        recentYPositions.Clear();
         upFrames = 0;
     }
 }
