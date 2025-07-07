@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 
 public class WordRecognizerHorizontal : MonoBehaviour
@@ -19,9 +20,9 @@ public class WordRecognizerHorizontal : MonoBehaviour
 
     public List<LetterTarget> letterTargets;  // All possible letter targets in scene
     public GameObject anchorTarget;           // Fixed anchor (image target)
-    public float maxSpacing = 0.1f;           // Max allowed X distance between letters
-    public float maxYDifference = 0.02f;      // Max allowed height difference
-    public Text uiText;
+    public float maxSpacing = 0.3f;           // Max allowed X distance between letters
+    public float maxYDifference = 0.05f;      // Max allowed height difference
+    public TextMeshProUGUI uiText;
 
     private HashSet<string> validWords = new HashSet<string>();
     private HashSet<string> detectedWords = new HashSet<string>();
