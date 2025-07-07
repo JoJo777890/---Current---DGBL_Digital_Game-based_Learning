@@ -16513,7 +16513,7 @@ PrefabInstance:
     - target: {fileID: 5666452253088237906, guid: ff596fad79ec5174b85fdaaca5777812,
         type: 3}
       propertyPath: m_Name
-      value: ebootTest Stat - WordDetector
+      value: RebootTest Stat - WordDetector
       objectReference: {fileID: 0}
     - target: {fileID: 5666452253088237906, guid: ff596fad79ec5174b85fdaaca5777812,
         type: 3}
@@ -23181,15 +23181,30 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607378949}
-  - component: {fileID: 1607378948}
+  - component: {fileID: 1607378950}
   m_Layer: 0
-  m_Name: WordRecognizer
+  m_Name: WordSpacingInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1607378948
+--- !u!4 &1607378949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607378947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.038138606, y: 0.14776981, z: -0.053251177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1607378950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23198,7 +23213,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607378947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35375cca62a335d4099a96a9fee3594b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f16a0b215fb3224286f5fe91b397a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   letterTargets:
@@ -23282,23 +23297,8 @@ MonoBehaviour:
     trackable: {fileID: 0}
   anchorTarget: {fileID: 469307046}
   maxSpacing: 0.3
-  maxYDifference: 0.075
+  maxYDifference: 0.05
   uiText: {fileID: 1772356204}
---- !u!4 &1607378949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607378947}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.038138606, y: 0.14776981, z: -0.053251177}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615794144
 GameObject:
   m_ObjectHideFlags: 0
@@ -25494,7 +25494,7 @@ PrefabInstance:
     - target: {fileID: 5158468144000687887, guid: ff596fad79ec5174b85fdaaca5777812,
         type: 3}
       propertyPath: m_text
-      value: '[Cat Recognizer]
+      value: '[Cat SpacingInfo]
 
         Letter Order: NULL
 
@@ -25508,7 +25508,7 @@ PrefabInstance:
     - target: {fileID: 5666452253088237906, guid: ff596fad79ec5174b85fdaaca5777812,
         type: 3}
       propertyPath: m_Name
-      value: RebootTest Stat - WordRecognizer
+      value: RebootTest Stat - WordSpacingInfo
       objectReference: {fileID: 0}
     - target: {fileID: 5666452253088237906, guid: ff596fad79ec5174b85fdaaca5777812,
         type: 3}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.IO;
 using Vuforia;
 
-public class WordRecognizer : MonoBehaviour
+public class WordSpacingInfo : MonoBehaviour
 {
 
     [System.Serializable]
