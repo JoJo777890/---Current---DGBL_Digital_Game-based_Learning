@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 using Vuforia;
 
 public class WordRecognizer : MonoBehaviour
@@ -21,7 +22,7 @@ public class WordRecognizer : MonoBehaviour
     public List<LetterTarget> letterTargets;  // All letter image targets
     public GameObject anchorTarget;           // Fixed image target (e.g. "c")
     public float maxSpacing = 0.3f;           // Max X gap (in meters)
-    public float maxYDifference = 0.075f;      // Max height difference (in meters)
+    public float maxYDifference = 0.05f;      // Max height difference (in meters)
     public TextMeshProUGUI uiText;
 
     private HashSet<string> validWords = new HashSet<string> { "cat", "act", "bat", "cab", "rat", "mat" };
