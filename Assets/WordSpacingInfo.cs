@@ -81,7 +81,7 @@ public class WordSpacingInfo : MonoBehaviour
         bool isNew = !detectedWords.Contains(sequence);
 
         // UI Output
-        uiText.text = $"Letter Order: {sequence}\nSpacing: {spacing1:F3}, {spacing2:F3}\nY diff: {yDiff1:F3}, {yDiff2:F3}";
+        uiText.text = $"Cat SpacingInfo\nLetter Order: {sequence}\nSpacing: {spacing1:F3}, {spacing2:F3}\nY diff: {yDiff1:F3}, {yDiff2:F3}";
 
         if (wellSpaced && wellAligned && isValid && isNew)
         {
