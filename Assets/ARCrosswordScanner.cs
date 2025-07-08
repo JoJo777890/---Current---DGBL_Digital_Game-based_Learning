@@ -1,14 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using Vuforia;
+using TMPro;
 
-
-public class AutoARCrosswordScanner : MonoBehaviour
+public class ARCrosswordScanner : MonoBehaviour
 {
     public TMP_Text debugText;
-    public float groupThreshold = 0.1f; // for both rowHeight and columnWidth
+    public float groupThreshold = 0.1f;
 
     private List<TrackedLetter> trackedLetters = new List<TrackedLetter>();
 
@@ -16,18 +14,30 @@ public class AutoARCrosswordScanner : MonoBehaviour
     {
         trackedLetters.Clear();
 
-        // Find all ImageTargetA to Z
-        foreach (char c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        // Find all active Vuforia image targets in the scene
+        TrackableBehaviour[] allTargets = FindObjectsOfType<TrackableBehaviour>();
+
+        foreach (var tb in allTargets)
         {
-            string name = "ImageTarget" + c;
-            GameObject obj = GameObject.Find(name);
-
-            if (obj == null) continue;
-
-            TrackableBehaviour tb = obj.GetComponent<TrackableBehaviour>();
-            if (tb != null && tb.CurrentStatus == TrackableBehaviour.Status.TRACKED)
+            if (tb.CurrentStatus == TrackableBehaviour.Status.TRACKED)
             {
-                trackedLetters.Add(new TrackedLetter { letter = c, position = obj.transform.position });
+                GameObject obj = tb.gameObject;
+                string objName = obj.name;
+
+                // Expect names like "ImageTargetA", "ImageTargetB", ...
+                if (objName.ToLower().StartsWith("imagetarget"))
+                {
+                    char letter = objName[objName.Length - 1];
+
+                    // Optional: force to uppercase
+                    letter = char.ToUpper(letter);
+
+                    trackedLetters.Add(new TrackedLetter
+                    {
+                        letter = letter,
+                        position = obj.transform.position
+                    });
+                }
             }
         }
 
@@ -37,10 +47,10 @@ public class AutoARCrosswordScanner : MonoBehaviour
         string vertical = ScanColumns(trackedLetters);
 
         string output = $"Horizontal:\n{horizontal}\nVertical:\n{vertical}";
-
         Debug.Log(output);
+
         if (debugText != null)
-            debugText.text = "[ARCrosswordScanner]\n" + output;
+            debugText.text = output;
     }
 
     string ScanRows(List<TrackedLetter> letters)
@@ -59,13 +69,10 @@ public class AutoARCrosswordScanner : MonoBehaviour
                     break;
                 }
             }
-
-            // Create a new row if the current row has no letters added.
             if (!added)
                 rows.Add(new List<TrackedLetter> { letter });
         }
 
-        // Sort rows top to bottom
         rows.Sort((a, b) => b[0].position.y.CompareTo(a[0].position.y));
         foreach (var row in rows)
             row.Sort((a, b) => a.position.x.CompareTo(b.position.x));
@@ -75,7 +82,7 @@ public class AutoARCrosswordScanner : MonoBehaviour
         {
             foreach (var l in row)
                 result += l.letter;
-            result += ", "; // Originally "\n"
+            result += "\n";
         }
 
         return result.Trim();
@@ -101,17 +108,16 @@ public class AutoARCrosswordScanner : MonoBehaviour
                 columns.Add(new List<TrackedLetter> { letter });
         }
 
-        // Sort columns left to right
         columns.Sort((a, b) => a[0].position.x.CompareTo(b[0].position.x));
         foreach (var col in columns)
-            col.Sort((a, b) => b.position.y.CompareTo(a.position.y)); // top to bottom
+            col.Sort((a, b) => b.position.y.CompareTo(a.position.y));
 
         string result = "";
         foreach (var col in columns)
         {
             foreach (var l in col)
                 result += l.letter;
-            result += ", "; // Originally "\n"
+            result += "\n";
         }
 
         return result.Trim();
