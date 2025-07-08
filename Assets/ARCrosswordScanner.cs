@@ -40,7 +40,7 @@ public class AutoARCrosswordScanner : MonoBehaviour
 
         Debug.Log(output);
         if (debugText != null)
-            debugText.text = output;
+            debugText.text = "[ARCrosswordScanner]\n" + output;
     }
 
     string ScanRows(List<TrackedLetter> letters)
@@ -75,7 +75,7 @@ public class AutoARCrosswordScanner : MonoBehaviour
         {
             foreach (var l in row)
                 result += l.letter;
-            result += "\n";
+            result += ", "; // Originally "\n"
         }
 
         return result.Trim();
@@ -111,7 +111,7 @@ public class AutoARCrosswordScanner : MonoBehaviour
         {
             foreach (var l in col)
                 result += l.letter;
-            result += "\n";
+            result += ", "; // Originally "\n"
         }
 
         return result.Trim();
