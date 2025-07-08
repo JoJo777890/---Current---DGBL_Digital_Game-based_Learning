@@ -8,16 +8,15 @@ using Vuforia;
 public class AutoARCrosswordScanner : MonoBehaviour
 {
     public TMP_Text debugText;
-    public float rowHeight = 0.1f;
+    public float groupThreshold = 0.1f; // for both rowHeight and columnWidth
 
     private List<TrackedLetter> trackedLetters = new List<TrackedLetter>();
 
     void Update()
     {
-        // Clear the list each frame
         trackedLetters.Clear();
 
-        // Find all objects named "ImageTargetA" to "ImageTargetZ"
+        // Find all ImageTargetA to Z
         foreach (char c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         {
             string name = "ImageTarget" + c;
@@ -25,7 +24,6 @@ public class AutoARCrosswordScanner : MonoBehaviour
 
             if (obj == null) continue;
 
-            // Check if it is being tracked
             TrackableBehaviour tb = obj.GetComponent<TrackableBehaviour>();
             if (tb != null && tb.CurrentStatus == TrackableBehaviour.Status.TRACKED)
             {
@@ -35,16 +33,26 @@ public class AutoARCrosswordScanner : MonoBehaviour
 
         if (trackedLetters.Count == 0) return;
 
-        // Group into rows
+        string horizontal = ScanRows(trackedLetters);
+        string vertical = ScanColumns(trackedLetters);
+
+        string output = $"Horizontal:\n{horizontal}\nVertical:\n{vertical}";
+
+        Debug.Log(output);
+        if (debugText != null)
+            debugText.text = output;
+    }
+
+    string ScanRows(List<TrackedLetter> letters)
+    {
         List<List<TrackedLetter>> rows = new List<List<TrackedLetter>>();
 
-        foreach (var letter in trackedLetters)
+        foreach (var letter in letters)
         {
             bool added = false;
-
             foreach (var row in rows)
             {
-                if (Mathf.Abs(letter.position.y - row[0].position.y) < rowHeight)
+                if (Mathf.Abs(letter.position.y - row[0].position.y) < groupThreshold)
                 {
                     row.Add(letter);
                     added = true;
@@ -52,34 +60,61 @@ public class AutoARCrosswordScanner : MonoBehaviour
                 }
             }
 
+            // Create a new row if the current row has no letters added.
             if (!added)
-            {
                 rows.Add(new List<TrackedLetter> { letter });
-            }
         }
 
         // Sort rows top to bottom
         rows.Sort((a, b) => b[0].position.y.CompareTo(a[0].position.y));
         foreach (var row in rows)
-        {
             row.Sort((a, b) => a.position.x.CompareTo(b.position.x));
-        }
 
-        string output = "";
+        string result = "";
         foreach (var row in rows)
         {
-            foreach (var letter in row)
-            {
-                output += letter.letter;
-            }
-            output += "\n";
+            foreach (var l in row)
+                result += l.letter;
+            result += "\n";
         }
 
-        Debug.Log("Detected letters:\n" + output);
-        if (debugText != null)
+        return result.Trim();
+    }
+
+    string ScanColumns(List<TrackedLetter> letters)
+    {
+        List<List<TrackedLetter>> columns = new List<List<TrackedLetter>>();
+
+        foreach (var letter in letters)
         {
-            debugText.text = output;
+            bool added = false;
+            foreach (var col in columns)
+            {
+                if (Mathf.Abs(letter.position.x - col[0].position.x) < groupThreshold)
+                {
+                    col.Add(letter);
+                    added = true;
+                    break;
+                }
+            }
+            if (!added)
+                columns.Add(new List<TrackedLetter> { letter });
         }
+
+        // Sort columns left to right
+        columns.Sort((a, b) => a[0].position.x.CompareTo(b[0].position.x));
+        foreach (var col in columns)
+            col.Sort((a, b) => b.position.y.CompareTo(a.position.y)); // top to bottom
+
+        string result = "";
+        foreach (var col in columns)
+        {
+            foreach (var l in col)
+                result += l.letter;
+            result += "\n";
+        }
+
+        return result.Trim();
     }
 
     class TrackedLetter
