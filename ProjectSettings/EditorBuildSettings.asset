@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Reboot_PitchDemo.unity
     guid: 1a0ac90df3869ef4d9a31b6ec1056734
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Reboot_PitchDemo 2.unity
     guid: 03dd6f02296366446b5b0651e0637289
+  - enabled: 1
+    path: Assets/Scenes/Reboot_PitchDemo 2 _v2.unity
+    guid: 9252281e7aa86404580a443db11e62d8
   m_configObjects: {}
